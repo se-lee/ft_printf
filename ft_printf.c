@@ -6,7 +6,7 @@ int	ft_printf(const char *str, ...)
 	va_list	args;
 	//t_format	format;
 	int	i;
-	int	c;
+//	int	c;
 	char type;
 
 	va_start(args, str);
@@ -33,11 +33,13 @@ int	ft_printf(const char *str, ...)
 			i += 1;
 			type = str[i];
 			if (type == 'c')
-				c = ft_type_char(va_arg(args, int));
+				ft_type_char(va_arg(args, int));
+			else if (type == 's')
+				ft_type_str(va_arg(args, char*));
 			else if (type == '%')
 				ft_type_char('%');
 			else if (type == 'd' || type == 'i')
-				ft_putnbr_fd(va_arg(args, int), 0);
+				ft_type_int(va_arg(args, int));
 			i += 1;
 		}
 	}
@@ -72,11 +74,23 @@ int	ft_type_char(int chr)
 	return (0);
 }
 
+int	ft_type_str(char *str)
+{
+	ft_putstr_fd(str, 1);
+	return (0);
+}
+
+int	ft_type_int(int num)
+{
+	ft_putnbr_fd(num, 1);
+	return (0);
+}
+
 int	main()
 {
 	char a;
 	a = 'a';
-	ft_printf("%c number=%d %% %c %c\n", a, 42, 'b', 'c');
-	//printf("%c %c %c\n", a, 'b', 'c');
+	ft_printf("%c number=%d %% %c %c %s %s %s\n", a, '*', 'b', 65, "hello", "good", "bye");
+	printf("%c number=%d %% %4c %c %s %s %s\n", a, '*', 'b', 65, "hello", "good", "bye");
 	return (0);
 }

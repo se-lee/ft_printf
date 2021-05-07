@@ -12,13 +12,13 @@ typedef struct s_format
 	int	minus; // 0 if minus doesnt exist, 1 if exists
 	int	zero; // 0 or 1
 	int	width;
-	int	precision;
+	int	precision; //dot
 	int	length;
 	char	type; //csiduxX
 }				t_format;
 
 int	ft_printf(const char *str, ...);
-int	ft_type_char(int chr);
-int	ft_type_str(int str);
+
+
 
 #endif
