@@ -111,7 +111,7 @@ int	main()
 		printf("No number was found !\n");
 
 	
-	ft_printf("%c number=%d %% %c %c %20s %s %s\n", a, '*', 'b', 65, "hello", "good", "bye");
-	printf("%c number=%d %% %c %c %2.4s %1.2s %s\n", a, '*', 'b', 65, "hello", "good", "bye");
+	ft_printf("%c number=%d %% %c %10c %3s %s %s\n", a, '*', 'b', 65, "hello", "good", "bye");
+	printf("%c number=%d %% %c %10c %3s %1.2s %s\n", a, '*', 'b', 65, "hello", "good", "bye");
 	return (0);
 }
