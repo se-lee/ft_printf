@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-09T14:14:18.962Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="WT1jwcmU9diFbOyK27tJ" version="14.7.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-09T14:15:28.729Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="OsEbyrvnddg_XjdaM7Kq" version="14.7.6" type="github">
   <diagram id="yPEqE9pZnHay2Fj2nCtt" name="Page-1">
     <mxGraphModel dx="1901" dy="1965" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -613,10 +613,15 @@
         <mxCell id="w6k9z0zSykjR_hNX79h0-178" value="result_str = apply_padding:&lt;br&gt;give in fmt, ____??" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2838" y="431.25" width="109" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="w6k9z0zSykjR_hNX79h0-180" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.457;entryY=-0.002;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="w6k9z0zSykjR_hNX79h0-192" target="w6k9z0zSykjR_hNX79h0-236" edge="1">
+        <mxCell id="w6k9z0zSykjR_hNX79h0-180" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="w6k9z0zSykjR_hNX79h0-192" target="jReNrDFuYqPUPWgGPOSk-42" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="3093" y="856.1700000000001" as="targetPoint" />
             <mxPoint x="2899.5" y="736.17" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="2881" y="730" />
+              <mxPoint x="2881" y="825" />
+              <mxPoint x="2690" y="825" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-184" value="what if width is less than str?&lt;br&gt;&lt;br&gt;if width &amp;lt; length of string, ignore width flag" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" parent="1" vertex="1">
@@ -837,8 +842,11 @@
         <mxCell id="jReNrDFuYqPUPWgGPOSk-36" value="apply_type&lt;br&gt;(returns length)" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="-590" y="1340" width="120" height="43.83" as="geometry" />
         </mxCell>
+        <mxCell id="jReNrDFuYqPUPWgGPOSk-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="jReNrDFuYqPUPWgGPOSk-42" target="w6k9z0zSykjR_hNX79h0-236">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-42" value="do ft_putstr_fd&lt;br&gt;(result_str)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2560" y="900" width="110" height="60" as="geometry" />
+          <mxGeometry x="2559.5" y="890" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-43" value="(left justify)&lt;br&gt;ft_memcpy(dest, src, size)&lt;br&gt;---&lt;br&gt;ft_memcpy(result_str, args, fmt-&amp;gt;prec_value)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
           <mxGeometry x="2861" y="677.5" width="126" height="120" as="geometry" />
