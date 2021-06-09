@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-09T14:09:28.451Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="wcdaczGlAb0uoQMnxB7t" version="14.7.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-09T14:14:18.962Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="WT1jwcmU9diFbOyK27tJ" version="14.7.6" type="github">
   <diagram id="yPEqE9pZnHay2Fj2nCtt" name="Page-1">
     <mxGraphModel dx="1901" dy="1965" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -642,7 +642,7 @@
           <mxGeometry x="2543.5" y="705.0000000000001" width="143" height="50" as="geometry" />
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-191" value="copy value in args to result_str on the right in &#39; padding &#39;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2559.5" y="802.49" width="110" height="60" as="geometry" />
+          <mxGeometry x="2559.5" y="790" width="110" height="60" as="geometry" />
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-192" value="copy from left in &lt;br&gt;&#39; padding &#39;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="2751" y="700" width="110" height="60" as="geometry" />
@@ -739,7 +739,7 @@
           <mxGeometry x="2543.5" y="266" width="142.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-236" value="return (length of result_str)" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="3015.5" y="920" width="172.5" height="80" as="geometry" />
+          <mxGeometry x="3015.5" y="932.5" width="172.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-237" value="Start:&amp;nbsp;&lt;br&gt;fmt, args&lt;br&gt;result_int;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1525.5" y="1340" width="142.5" height="80" as="geometry" />
@@ -781,9 +781,6 @@
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-11" value="precision - 例えば、文字列の場合&lt;br&gt;Precisionのサイズの分だけ表示される&lt;br&gt;文字列　Hello、Prec ３　＝＞Hel のみ表示&lt;br&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
           <mxGeometry x="1660" y="677.5" width="350" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="jReNrDFuYqPUPWgGPOSk-12" value="do ft_putstr_fd" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
-          <mxGeometry x="2253" y="585" width="126" height="125.59" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jReNrDFuYqPUPWgGPOSk-13" target="w6k9z0zSykjR_hNX79h0-189">
           <mxGeometry relative="1" as="geometry" />
@@ -841,10 +838,10 @@
           <mxGeometry x="-590" y="1340" width="120" height="43.83" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-42" value="do ft_putstr_fd&lt;br&gt;(result_str)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2800" y="845" width="110" height="60" as="geometry" />
+          <mxGeometry x="2560" y="900" width="110" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jReNrDFuYqPUPWgGPOSk-43" value="ft_memcpy(dest, src, size)&lt;br&gt;---&lt;br&gt;ft_memcpy(result_str, args, fmt-&amp;gt;prec_value)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
-          <mxGeometry x="2410" y="760" width="126" height="120" as="geometry" />
+        <mxCell id="jReNrDFuYqPUPWgGPOSk-43" value="(left justify)&lt;br&gt;ft_memcpy(dest, src, size)&lt;br&gt;---&lt;br&gt;ft_memcpy(result_str, args, fmt-&amp;gt;prec_value)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2861" y="677.5" width="126" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
