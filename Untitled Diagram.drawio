@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-10T14:05:20.389Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="1WKETqLIs-C6gBPJV41a" version="14.7.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-10T14:11:20.999Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="X6xz_bSAVaQIYwHjz42t" version="14.7.7" type="github">
   <diagram id="yPEqE9pZnHay2Fj2nCtt" name="Page-1">
     <mxGraphModel dx="1887" dy="2738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -668,17 +668,17 @@
         <mxCell id="w6k9z0zSykjR_hNX79h0-203" value="need a variable to store length" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" parent="1" vertex="1">
           <mxGeometry x="-700" y="15" width="110" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="jReNrDFuYqPUPWgGPOSk-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="w6k9z0zSykjR_hNX79h0-204" edge="1">
+        <mxCell id="jReNrDFuYqPUPWgGPOSk-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="qNwciVff2baxDr8QxZV5-32" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-520" y="300" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-690" y="670" />
+              <mxPoint x="-690" y="730" />
               <mxPoint x="-690" y="300" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-204" value="[REVISE]&amp;nbsp;&lt;br&gt;call&lt;br&gt;read_format(fmt, str)" style="whiteSpace=wrap;html=1;strokeWidth=2;dashed=1;dashPattern=1 4;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="-500.5" y="640" width="120" height="60" as="geometry" />
+          <mxGeometry x="-500.5" y="645" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="w6k9z0zSykjR_hNX79h0-206" value="finish&lt;br&gt;return: (length &lt;br&gt;of string)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="-390" y="930" width="130" height="60" as="geometry" />
@@ -818,7 +818,7 @@
           <mxGeometry x="414" y="190" width="140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-26" value="+++&lt;br&gt;add steps to display&lt;br&gt;1) include in ft_printf&lt;br&gt;or&lt;br&gt;2) another function to display and&amp;nbsp; that uses read_format&lt;br&gt;&lt;br&gt;write&amp;nbsp;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-695" y="700.58" width="150" height="159.42" as="geometry" />
+          <mxGeometry x="-733" y="760" width="150" height="159.42" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-28" value="***&lt;br&gt;int display_and_length(fmt, args)&lt;br&gt;***&lt;br&gt;- writes string from each data_type function&lt;br&gt;- returns the final length of string" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" parent="1" vertex="1">
           <mxGeometry y="1024" width="350" height="145" as="geometry" />
@@ -983,6 +983,9 @@
         </mxCell>
         <mxCell id="qNwciVff2baxDr8QxZV5-31" value="initiate fmt" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="-500.5" y="569.9999999999999" width="120" height="43.83" as="geometry" />
+        </mxCell>
+        <mxCell id="qNwciVff2baxDr8QxZV5-32" value="Call apply_type" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-500" y="708.0799999999999" width="120" height="43.83" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
