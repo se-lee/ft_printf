@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-06-10T13:53:57.578Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="MvXbW-CTNMIndXb9I8lG" version="14.7.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-10T13:59:44.763Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="oJ54Ey0A-YcyA6Don-Xf" version="14.7.7" type="github">
   <diagram id="yPEqE9pZnHay2Fj2nCtt" name="Page-1">
-    <mxGraphModel dx="3121" dy="2738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1887" dy="2738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -821,7 +821,7 @@
           <mxGeometry x="-695" y="700.58" width="150" height="159.42" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-28" value="***&lt;br&gt;int display_and_length(fmt, args)&lt;br&gt;***&lt;br&gt;- writes string from each data_type function&lt;br&gt;- returns the final length of string" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" parent="1" vertex="1">
-          <mxGeometry x="150" y="1070" width="350" height="145" as="geometry" />
+          <mxGeometry y="1024" width="350" height="145" as="geometry" />
         </mxCell>
         <mxCell id="jReNrDFuYqPUPWgGPOSk-29" value="all return values are in int&lt;br&gt;= the length of the string(final display)&lt;br&gt;&lt;br&gt;do all the flag options inside&lt;br&gt;do write&lt;br&gt;&lt;br&gt;--&amp;gt; call apply_type function in ft_printf,&lt;br&gt;store the returned int value into&amp;nbsp;&lt;br&gt;fmt-&amp;gt;return_len" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" parent="1" vertex="1">
           <mxGeometry x="1079.83" y="1520" width="340.17" height="150" as="geometry" />
