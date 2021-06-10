@@ -17,7 +17,7 @@ int ft_printf(const char *str, ...)
         else
         {
             read_format(str[++i], fmt); //? or str[i++] ?
-            // call 'apply_type' function
+            // call apply_type(fmt, ars);
         }
         i++;
     }
@@ -71,6 +71,19 @@ int read_number(str, fmt, args);
 return (nbr);
 */
 
+char *apply_padding(t_format fmt)
+{
+    char *padding;
+
+    padding = calloc(fmt->width, sizeof(char));
+    if (fmt->zero == 1)
+    {
+        padding = ft_memset(padding, '0', fmt->width); //or fmt->prec_value?
+    }
+    else
+        padding = ft_memset(padding, ' '. fmt->width);
+    return (padding);
+}
 
 int apply_type(t_format fmt, va_list args)
 {
@@ -148,6 +161,10 @@ int type_int(t_format fmt, va_list args)
     args_int = itoa(args);
     if (fmt->prec_value > ft_strlen(args_int))
     {
-        //
+        //fill zeros
+    }
+    if (sign != 0)
+    {
+
     }
 }
