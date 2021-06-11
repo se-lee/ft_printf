@@ -7,26 +7,29 @@ void    fmt_init(t_format *fmt)
     fmt->width = 0;
     fmt->prec_dot = 0;
     fmt->prec_value = 0;
-    fmt->type = 0;
+    fmt->type = 'a';
     fmt->printf_len = 0;
 }
 
-int	check_flags(char c, t_format *fmt, int i)
+int	check_flags(char *c, t_format *fmt, int i)
 {
-	if (c == '-')
+	//printf("in check falg i = %d\n", i);//
+	if (c[i] == '-')
 	{
 		fmt->minus = 1;
 		i++;
 	}
-	else if (c == '0')
+	else if (c[i] == '0')
 	{
+	//	printf("here\n");//
 		fmt->zero = 1;
 		i++;
 	}
 	return (i);
 }
 
-int check_width(char *str, t_format *fmt, int i)
+//!! Width and Precision !! not working correctly 
+int check_width(char *str, t_format *fmt, int i) 
 {
 	if (str[i] == '*')
 	{
@@ -52,6 +55,7 @@ int check_precision(char *str, t_format *fmt, int i)
     return (i);
 }
 
+//!! Type not working correctly
 int check_type(char c, t_format *fmt, int i)
 {
 	fmt->type = c;
@@ -61,12 +65,14 @@ int check_type(char c, t_format *fmt, int i)
 
 int read_format(char *str, t_format *fmt, int i)
 {
-    i++;
     fmt_init(fmt);
-	i += check_flags(str[i], fmt, i);
-	i += check_width(str, fmt, i);
-	i += check_precision(str, fmt, i);
-	i += check_type(str[i], fmt, i);//in check type you have your displaying fct
+	i = check_flags(str, fmt, i);
+	i = check_width(str, fmt, i);
+	i = check_precision(str, fmt, i);
+	// printf("i = %d\n", i);//
+	// printf("str = %s\n", &str[i]);//
+	i = check_type(str[i], fmt, i);//in check type you have your displaying fct
+	printf("minus = %d, zero = %d, width = %d, prec_dot = %d, prec_value = %d, type = %c, len = %d\n", fmt->minus, fmt->zero, fmt->width, fmt->prec_dot, fmt->prec_value, fmt->type, fmt->printf_len);//
 	return (i);
 }
 
@@ -98,35 +104,38 @@ int type_char(t_format fmt)
     {
         result_c = ft_memcpy(result_c, fmt.arg_list, sizeof(char));
     }
-    else if (fmt.minus == 0)
+    else if (fmt.minus == 0)//check if there's zero
     {
+	printf("here\n");//!!
         result_c = ft_memcpy(fmt.arg_list, result_c, sizeof(char));
     }
 	else
-	//	result_c = ft_strdup(arg_char);
+	{
 		ft_putchar_fd(arg_char, 1);
-
+		return (1);
+	}
     return (ft_strlen(result_c));
 }
 
 int type_str(t_format fmt)
 {
     char *result_str;
-    //char *arg_str;
+    char *arg_str;
 
+	arg_str = NULL;
     if (fmt.width > 0 && fmt.width > ft_strlen((char*)fmt.arg_list))
         result_str = apply_padding(fmt);
     if (fmt.prec_value < ft_strlen((char*)fmt.arg_list))
     {
-        //cut args
+        arg_str = ft_memcpy(arg_str, fmt.arg_list, fmt.prec_value);
     }
     if (fmt.minus == 1) //
     {
-        result_str = ft_memcpy(result_str, fmt.arg_list, fmt.width);
+        result_str = ft_memcpy(result_str, arg_str, fmt.width);
     }
     else if (fmt.minus == 0)
     {
-        result_str = ft_memcpy(fmt.arg_list, result_str, fmt.width);
+        result_str = ft_memcpy(arg_str, result_str, fmt.width);
     }
     ft_putstr_fd(result_str, 1);
     return (ft_strlen(result_str));
@@ -192,17 +201,19 @@ int ft_printf(const char *str, ...)
 		}
 		else
         {
+			i++;
             i += read_format((char*)str, &fmt, i);
 			fmt.printf_len = apply_type(fmt);
         }
     }
+
+// printf("(fmt %c)\n", fmt.type);
     return (fmt.printf_len);
 }
 
 int	main()
 {
-	ft_printf("ft=%c\n", 'c');
-	printf("printf= %c\n", 'c');
-
+	ft_printf("%c\n", 'A');
+	// printf("printf= %c\n", 'A');
 	return (0);
 }
