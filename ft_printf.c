@@ -28,22 +28,34 @@ int	check_flags(char c, t_format *fmt, int i)
 
 int check_width(char *str, t_format *fmt, int i)
 {
-    (void)str;
-    (void)fmt;
+	if (str[i] == '*')
+	{
+		fmt->width = (int)fmt->arg_list;
+		i++;
+	}
+	else if (ft_isdigit(str[i]))
+	{
+		fmt->width = fmt->width * 10 + (str[i] - '0'); //??
+		i++;
+	}
     return (i);
 }
 
 int check_precision(char *str, t_format *fmt, int i)
 {
-    (void)str;
-    (void)fmt;
+	if (str[i] == '.')
+	{
+		fmt->prec_dot = 1;
+		fmt->prec_value = fmt->prec_value * 10 + (str[i] - '0'); //??
+		i++;
+	}
     return (i);
 }
 
 int check_type(char c, t_format *fmt, int i)
 {
-    (void)c;
-    (void)fmt;
+	fmt->type = c;
+    i++;
     return(i);
 }
 
@@ -57,35 +69,6 @@ int read_format(char *str, t_format *fmt, int i)
 	i += check_type(str[i], fmt, i);//in check type you have your displaying fct
 	return (i);
 }
-/*
-    if (str[i] == '-')
-    {
-        fmt->minus = 1;
-    }
-    if (str[i]) == '0')
-        fmt->zero = 1;
-    if (str[i] == '*' || ft_isdigit(str[i]))
-        fmt->width = read_number(str, fmt, args);
-    if (str[i] == '.')
-    {
-        fmt->prec_dot = 1;
-        fmt->prec_value = read_number(str, fmt, args);
-    }
-    i++;
-    fmt->type = str[i];
-
-    return (fmt);
-*/
-
-/*
-int read_number(str, fmt, args);
-{
-
-
-
-    return (nbr);
-}
-*/
 
 char *apply_padding(t_format fmt)
 {
@@ -99,13 +82,14 @@ char *apply_padding(t_format fmt)
     else
         padding = ft_memset(padding, ' ', fmt.width);
     return (padding);
-    //free?
 }
 
 int type_char(t_format fmt)
 {
     char *result_c;
+	char arg_char;
 
+	arg_char = (char)va_arg(fmt.arg_list, int);
     if (fmt.width > 0)
     {
         result_c = apply_padding(fmt);
@@ -118,7 +102,9 @@ int type_char(t_format fmt)
     {
         result_c = ft_memcpy(fmt.arg_list, result_c, sizeof(char));
     }
-    ft_putstr_fd(result_c, 1);
+	else
+	//	result_c = ft_strdup(arg_char);
+		ft_putchar_fd(arg_char, 1);
 
     return (ft_strlen(result_c));
 }
@@ -188,7 +174,6 @@ int apply_type(t_format fmt)
     return (-1); //error 
 }
 
-
 int ft_printf(const char *str, ...)
 {
     t_format fmt;
@@ -208,7 +193,16 @@ int ft_printf(const char *str, ...)
 		else
         {
             i += read_format((char*)str, &fmt, i);
+			fmt.printf_len = apply_type(fmt);
         }
     }
     return (fmt.printf_len);
+}
+
+int	main()
+{
+	ft_printf("ft=%c\n", 'c');
+	printf("printf= %c\n", 'c');
+
+	return (0);
 }
