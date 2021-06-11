@@ -16,11 +16,10 @@ typedef struct s_format
 	int	prec_dot; //dot, 0 is not existent
 	int prec_value; //the actual value of prec
 	char	type; //csiduxX
-	int	return_len; //length of final result (str after all flags applied)
+	int	printf_len; //length of final result (str after all flags applied)
 }				t_format;
 
 int	ft_printf(const char *str, ...); //__attribute__(format(printf, 1, 2)); //attribute -> 
-
 
 
 #endif
