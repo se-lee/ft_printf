@@ -6,7 +6,7 @@
 #    By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 13:48:53 by selee             #+#    #+#              #
-#    Updated: 2020/12/15 18:15:53 by selee            ###   ########lyon.fr    #
+#    Updated: 2021/06/12 17:51:11 by selee            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,17 @@ OBJS	= $(SRCS:.c=.o)
 
 BONUS_OBJS = $(BONUS:.c=.o)
 
+COMP		=	gcc
+
 NAME	= libft.a
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -g -Wall -Wextra -Werror
 
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(COMP) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(HEADER)
-	$(AR) rcs $(NAME) $?
+	$(AR) rcs $(NAME) $(OBJS)
 
 all: $(NAME)
 
@@ -56,6 +58,6 @@ re:
 	$(MAKE) all
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	$(AR) rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	$(AR) rs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 .PHONY: all clean fclean bonus

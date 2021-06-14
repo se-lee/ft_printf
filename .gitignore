@@ -1,4 +1,7 @@
-printf.md
 a.out
-test.c
 ft_printf_past.c
+printf.md
+test_main.c
+test.c
+printfTester/
+.DS_Store
