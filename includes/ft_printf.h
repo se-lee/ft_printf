@@ -22,7 +22,7 @@ typedef struct s_format
 }				t_format;
 
 void    fmt_init(t_format *fmt);
-char	*apply_padding(t_format fmt);
+char	*apply_padding(t_format fmt, int len);
 int		check_flags(char *c, t_format *fmt, int i);
 int 	check_width(char *str, t_format *fmt, int i); 
 int 	check_precision(char *str, t_format *fmt, int i);
@@ -31,6 +31,7 @@ int 	type_char(t_format fmt);
 int 	type_str(t_format fmt);
 int 	type_int(t_format *fmt);
 char    set_zero_or_space(t_format fmt);
+char    *set_left_or_right(t_format fmt, char *str);
 
 
 int		ft_printf(const char *str, ...); //__attribute__(format(printf, 1, 2)); //attribute -> 

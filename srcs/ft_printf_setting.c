@@ -12,16 +12,16 @@ char    set_zero_or_space(t_format fmt)
     return (pad);
 }
 
-char *apply_padding(t_format fmt)
+char *apply_padding(t_format fmt, int len)
 {
     char *padding;
 
-    padding = ft_calloc(fmt.width, sizeof(char));
+    padding = ft_calloc(len, sizeof(char));
     if (fmt.zero == 1)
     {
-        padding = ft_memset(padding, '0', fmt.width);
+        padding = ft_memset(padding, '0', len);
     }
     else
-        padding = ft_memset(padding, ' ', fmt.width);
+        padding = ft_memset(padding, ' ', len);
     return (padding);
 }

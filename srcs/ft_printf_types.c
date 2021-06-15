@@ -39,29 +39,27 @@ int	type_str(t_format fmt)
 	int	i;
 
 	i = 0;
+	result_str = NULL;
 	if (!(fmt.str))
 		return (0);
-	if (fmt.width > ft_strlen(fmt.str))
-		result_str = apply_padding(fmt);
-/*printf("len = %d\n", ft_strlen(result_str));*/
 	if ((fmt.prec_value < ft_strlen(fmt.str)) && (fmt.prec_value != 0))
-		fmt.str = ft_substr(fmt.str, 0, fmt.prec_value);
-	while (i < fmt.width)
+		fmt.str = ft_substr(fmt.str, 0, fmt.prec_value); //substr does malloc
+	if (fmt.width > ft_strlen(fmt.str))
 	{
-		if (fmt.)
-	}	
-	
-	// if (fmt.minus == 1)
-	// {
-	// 	result_str = ft_memcpy(result_str, fmt.str, ft_strlen(result_str));
-	// }
-	// else if (fmt.minus == 0)
-	// {
-	// 	result_str = ft_memcpy(fmt.str, result_str, ft_strlen(result_str));
-	// }
+		result_str = apply_padding(fmt, fmt.width - ft_strlen(fmt.str)); //malloc 
+		/* i need free previous result_str in order to do the following (fmt.minus) */
+		if (fmt.minus == 1)
+			result_str = ft_strjoin(fmt.str, result_str); //strjoin does malloc
+		else if (fmt.minus == 0)
+			result_str = ft_strjoin(result_str, fmt.str); //strjoin does malloc
+	}
+	else
+		result_str = ft_strdup(fmt.str); //does malloc
 	ft_putstr_fd(result_str, 1);
 	fmt.printf_len = ft_strlen(result_str);
 	free(result_str);
+	if ((fmt.prec_value < ft_strlen(fmt.str)) && (fmt.prec_value != 0))
+		free(fmt.str);
 	return (fmt.printf_len);
 }
 
