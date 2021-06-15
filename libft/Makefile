@@ -37,7 +37,7 @@ COMP		=	gcc
 
 NAME	= libft.a
 
-CFLAGS	= -g -Wall -Wextra -Werror
+CFLAGS	= -g -Wall -Wextra -Werror #-fsanitize=address
 
 %.o: %.c $(HEADER)
 	$(COMP) $(CFLAGS) -c $< -o $@

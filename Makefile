@@ -12,7 +12,7 @@ NAME		= libftprintf.a
 LIBFT_FILE	= $(LIBFT)/libft.a
 CC			= gcc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror 
+CFLAGS		= -g -Wall -Wextra -Werror #-fsanitize=address
 HEADERS		= $(addprefix $(INC)/, ft_printf.h)
 
 all:		init $(NAME)

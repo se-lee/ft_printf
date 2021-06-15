@@ -16,12 +16,11 @@ char *apply_padding(t_format fmt, int len)
 {
     char *padding;
 
-    padding = ft_calloc(len, sizeof(char));
+    padding = ft_calloc(len + 1, sizeof(char)); //malloc
     if (fmt.zero == 1)
-    {
-        padding = ft_memset(padding, '0', len);
-    }
+        padding = ft_memset(padding, '0', len); //no malloc
     else
         padding = ft_memset(padding, ' ', len);
     return (padding);
 }
+

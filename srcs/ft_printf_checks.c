@@ -8,7 +8,6 @@ void    fmt_init(t_format *fmt)
     fmt->prec_dot = 0;
     fmt->prec_value = 0;
     fmt->type = '\0';
-//    fmt->printf_len = 0;
     fmt->c = '\0';
     fmt->str = NULL;
 }
@@ -80,10 +79,10 @@ int check_type(char c, t_format *fmt, int i, char **str, char *w)
 	fmt->type = c;
     i++;
     if (c == 's')
-        *str = va_arg(fmt->arg_list, char *);
+        *str = ft_strdup(va_arg(fmt->arg_list, char *));
     if (c == 'c')
         *w = (char)va_arg(fmt->arg_list, int);
-    if (c == 'i')
+    if (c == 'i' || c == 'd')
         *str = ft_itoa(va_arg(fmt->arg_list, int));//leaks !!!
     return(i);
 }
