@@ -70,30 +70,29 @@ int	type_str(t_format fmt)
 
 int	type_int(t_format *fmt)
 {
-	//int		arg_int;
 	char	*result_int;
-	char	*int_char;
-	char	*sign;
+//	char	*int_char;
+//	char	sign;
+	char	*temp;
+
+	temp = NULL;
 	if (!(fmt->str))
 		return (0);
 	if ((fmt->prec_value < ft_strlen(fmt->str)) && (fmt->prec_dot == 1))
 	{
-
+		temp = fmt->str;
+		fmt->str = ft_substr(temp, 0, fmt->prec_value);
+		free(temp);
 	}
-	// if ((int)fmt->arg_list < 0)
-	// {
-	// 	arg_int = arg_int * -1;
-	// 	sign = ft_strdup("-");
-	// }
-
-	// if (fmt.prec_value > ft_strlen(fmt.str))
-	// {
-	//     //fill zeros
-	// }
-	// if (sign != 0)
-	// {
-
-	// }
+	if (fmt->prec_value > ft_strlen(fmt->str))
+	{
+		fmt->zero = 1;
+		temp = apply_padding(*fmt, (fmt->prec_value - ft_strlen(fmt->str)));
+		result_int = ft_strjoin(fmt->str, temp);
+printf("tmp:%s ", temp);
+		free(temp);
+	}
+printf("prc:%d ", fmt->prec_value);
 	result_int = ft_strdup(fmt->str);
 	ft_putstr_fd(result_int, 1);
 	free(fmt->str);
