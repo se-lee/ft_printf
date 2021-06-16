@@ -69,6 +69,9 @@ int	type_int(t_format *fmt)
 	temp = NULL;
 	prec_zero = NULL; //malloc
 	width_pad = NULL;; //malloc
+// printf("minus:%d ", fmt->minus);
+// printf("wid:%d ", fmt->width);
+// printf("prec:%d ", fmt->prec_value);
 	if (!(fmt->str))
 		return (0);
 	if (fmt->prec_value < ft_strlen(fmt->str))
@@ -78,15 +81,18 @@ int	type_int(t_format *fmt)
 		fmt->zero = 1;
 		temp = apply_padding(*fmt, (fmt->prec_value - ft_strlen(fmt->str)));
 		prec_zero = ft_strjoin(temp, fmt->str); //malloc
+// printf("zero:|%s| ", prec_zero);
 		free(temp);
 	}
-
 	if (ft_strlen(prec_zero) < fmt->width)
 	{
+		fmt->zero = 0;
 		width_pad = apply_padding(*fmt, fmt->width - ft_strlen(prec_zero)); //malloc
 	}
-	else if (fmt->width < ft_strlen(prec_zero))
+	else if (fmt->width <= ft_strlen(prec_zero))
 		width_pad = ft_strdup("");
+// printf("fmtz:%d ", fmt->zero);
+// printf("pad:|%s| ", width_pad);
 	result_int = sort_left_right(*fmt, prec_zero, width_pad); //malloc
 	ft_putstr_fd(result_int, 1);
 	fmt->printf_len = ft_strlen(result_int);
