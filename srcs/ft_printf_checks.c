@@ -81,7 +81,7 @@ int check_type(char c, t_format *fmt, int i, char **str, char *w)
     i++;
     if (c == 's')
         *str = ft_strdup(va_arg(fmt->arg_list, char *));
-    if (c == 'c')
+    if (c == 'c' || c == '%')
         *w = (char)va_arg(fmt->arg_list, int);
     if (c == 'i' || c == 'd')
         *str = ft_itoa(va_arg(fmt->arg_list, int));//leaks !!!
@@ -93,19 +93,20 @@ int check_type(char c, t_format *fmt, int i, char **str, char *w)
 int check_type(char c, t_format *fmt, int i, char **str, char *w)
 {
 	fmt->type = c;
-  //  int nbr;
+    int nbr;
 
     i++;
     if (c == 's')
         *str = ft_strdup(va_arg(fmt->arg_list, char *));
     if (c == 'c')
         *w = (char)va_arg(fmt->arg_list, int);
-    // if (c == 'i' || c == 'd')
-    // {
-    //     nbr = va_arg(fmt->arg_list, int);
-    //     if (nbr < 0)
-    //         nbr = nbr * -1;
-    //     *str = ft_itoa(nbr);
-    // }
+    if (c == 'i' || c == 'd')
+    {
+        nbr = va_arg(fmt->arg_list, int);
+        if (nbr < 0)
+            nbr = nbr * -1;
+        *str = ft_itoa(nbr);
+    }
     return(i);
-}*/
+}
+*/
