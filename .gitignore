@@ -5,3 +5,4 @@ test_main.c
 test.c
 printfTester/
 .DS_Store
+*.swp

@@ -67,22 +67,26 @@ int	type_int(t_format *fmt)
 
 	result_int = NULL;
 	temp = NULL;
-	prec_zero = ft_strdup(""); //malloc
-	width_pad = ft_strdup(""); //malloc
+	prec_zero = NULL; //malloc
+	width_pad = NULL;; //malloc
 	if (!(fmt->str))
 		return (0);
 	if (fmt->prec_value < ft_strlen(fmt->str))
 		prec_zero = ft_strdup(fmt->str);
-	if (ft_strlen(fmt->str) < fmt->prec_value)
+	else if (ft_strlen(fmt->str) < fmt->prec_value)
 	{
 		fmt->zero = 1;
-		temp = apply_padding(*fmt, (fmt->prec_value) - ft_strlen(fmt->str));
+		temp = apply_padding(*fmt, (fmt->prec_value - ft_strlen(fmt->str)));
 		prec_zero = ft_strjoin(temp, fmt->str); //malloc
 		free(temp);
 	}
 //printf("prc:|%s|", prec_zero);
 	if (ft_strlen(prec_zero) < fmt->width)
+	{
 		width_pad = apply_padding(*fmt, fmt->width - ft_strlen(prec_zero)); //malloc
+	}
+	else if (fmt->width < ft_strlen(prec_zero))
+		width_pad = ft_strdup("");
 	result_int = sort_left_right(*fmt, prec_zero, width_pad); //malloc
 	ft_putstr_fd(result_int, 1);
 	fmt->printf_len = ft_strlen(result_int);
