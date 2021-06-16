@@ -80,7 +80,7 @@ int	type_int(t_format *fmt)
 		prec_zero = ft_strjoin(temp, fmt->str); //malloc
 		free(temp);
 	}
-//printf("prc:|%s|", prec_zero);
+
 	if (ft_strlen(prec_zero) < fmt->width)
 	{
 		width_pad = apply_padding(*fmt, fmt->width - ft_strlen(prec_zero)); //malloc
