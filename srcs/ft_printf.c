@@ -3,7 +3,6 @@
 int read_format(char *str, t_format *fmt, int i)
 {
 //  i++; 
-//    printf("koko\n");//
     fmt_init(fmt);
 	i = check_flags(str, fmt, i);
 	i = check_width(str, fmt, i);
@@ -20,7 +19,7 @@ int apply_type(t_format fmt)
     else if (fmt.type == 's')
         return (type_str(fmt));
     else if (fmt.type == 'i' || fmt.type == 'd')
-        return (type_int(&fmt)); // motomoto &fmt
+        return (type_int(&fmt));//(fmt, va_arg(fmt.arg_list, int))); // motomoto type_int(&fmt);
     // else if (fmt.type == 'u')
     //     return (type_uint(fmt));
     // else if (fmt.type == 'x' || fmt.type == 'X')
