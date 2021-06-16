@@ -1,17 +1,5 @@
 #include "ft_printf.h"
 
-char    set_zero_or_space(t_format fmt)
-{
-    char    pad;
-
-    pad = '\0';
-    if (fmt.zero == 1)
-        pad = '0';
-    else if (fmt.zero == 0)
-        pad = ' ';
-    return (pad);
-}
-
 char *apply_padding(t_format fmt, int len)
 {
     char *padding;
@@ -24,3 +12,14 @@ char *apply_padding(t_format fmt, int len)
     return (padding);
 }
 
+char  *sort_left_right(t_format fmt, char *str, char *padding)
+{
+    char    *result;
+
+    result = NULL;
+    if (fmt.minus == 1)
+        result = ft_strjoin(str, padding);       
+    else if (fmt.minus == 0 )
+        result = ft_strjoin(padding, str);
+    return (result);
+}

@@ -2,34 +2,26 @@
 
 int	type_char(t_format fmt)
 {
-	char	pad;
-	int		i;
-
-	i = 0;
+	char	*padding;
+	
+	padding = ft_strdup("");
 	if (fmt.width > 1)
 	{
-		pad = set_zero_or_space(fmt);
-		if (fmt.minus == 0)
-		{
-			while (i < fmt.width - 1)
-			{
-				ft_putchar_fd(pad, 1);
-				i++;
-			}
-		}
+		free(padding);
+		padding = apply_padding(fmt, (fmt.width - 1));
 	}
-	ft_putchar_fd(fmt.c, 1);
 	if (fmt.minus == 1)
 	{
-		i++;
-		while (i < fmt.width)
-		{
-			ft_putchar_fd(pad, 1);
-			i++;
-		}
-	}
-	i++;
-	fmt.printf_len = i;
+	    ft_putchar_fd(fmt.c, 1);
+        ft_putstr_fd(padding, 1);
+    }
+    else if (fmt.minus == 0)
+    {
+        ft_putstr_fd(padding, 1);
+        ft_putchar_fd(fmt.c, 1);
+    }
+	fmt.printf_len = ft_strlen(padding) + 1;
+	free(padding);
 	return (fmt.printf_len);
 }
 
@@ -53,10 +45,7 @@ int	type_str(t_format fmt)
 	if (fmt.width > ft_strlen(fmt.str))
 	{
 		temp = apply_padding(fmt, (fmt.width - ft_strlen(fmt.str)));
-		if (fmt.minus == 1)
-			result_str = ft_strjoin(fmt.str, temp); 
-		else if (fmt.minus == 0)
-			result_str = ft_strjoin(temp, fmt.str); 
+		result_str = sort_left_right(fmt, fmt.str, temp);
 		free(temp);
 	}
 	else
@@ -70,37 +59,36 @@ int	type_str(t_format fmt)
 
 int	type_int(t_format *fmt)
 {
-	char	*result_int;
-//	char	*int_char;
+	char	*result_int; //final output
 //	char	sign;
-	char	*temp;
+	char	*temp; 
+ 	char	*width_pad; //entire length
+	char	*prec_zero; //a string with number + zero fillings
 
+	result_int = NULL;
 	temp = NULL;
+	prec_zero = ft_strdup(""); //malloc
+	width_pad = ft_strdup(""); //malloc
 	if (!(fmt->str))
 		return (0);
-	if ((fmt->prec_value < ft_strlen(fmt->str)) && (fmt->prec_dot == 1))
-	{
-		temp = fmt->str;
-		fmt->str = ft_substr(temp, 0, fmt->prec_value);
-		free(temp);
-	}
-	if (fmt->prec_value > ft_strlen(fmt->str))
+	if (fmt->prec_value < ft_strlen(fmt->str))
+		prec_zero = ft_strdup(fmt->str);
+	if (ft_strlen(fmt->str) < fmt->prec_value)
 	{
 		fmt->zero = 1;
-		temp = apply_padding(*fmt, (fmt->prec_value - ft_strlen(fmt->str)));
-		result_int = ft_strjoin(fmt->str, temp);
-printf("tmp:%s ", temp);
+		temp = apply_padding(*fmt, (fmt->prec_value) - ft_strlen(fmt->str));
+		prec_zero = ft_strjoin(temp, fmt->str); //malloc
 		free(temp);
 	}
-printf("prc:%d ", fmt->prec_value);
-	result_int = ft_strdup(fmt->str);
+//printf("prc:|%s|", prec_zero);
+	if (ft_strlen(prec_zero) < fmt->width)
+		width_pad = apply_padding(*fmt, fmt->width - ft_strlen(prec_zero)); //malloc
+	result_int = sort_left_right(*fmt, prec_zero, width_pad); //malloc
 	ft_putstr_fd(result_int, 1);
+	fmt->printf_len = ft_strlen(result_int);
+	free(prec_zero);
+	free(width_pad);
 	free(fmt->str);
 	free(result_int);
-	return (ft_strlen(result_int));
+	return (fmt->printf_len);
 }
-
-
-//int	type_uint
-//int	type_hexa
-//int	type_ptr

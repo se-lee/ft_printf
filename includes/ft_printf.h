@@ -30,8 +30,7 @@ int 	check_type(char c, t_format *fmt, int i, char **str, char *w);
 int 	type_char(t_format fmt);
 int 	type_str(t_format fmt);
 int 	type_int(t_format *fmt);
-char    set_zero_or_space(t_format fmt);
-char    *set_left_or_right(t_format fmt, char *str);
+char  *sort_left_right(t_format fmt, char *str, char *padding);
 
 
 int		ft_printf(const char *str, ...); //__attribute__(format(printf, 1, 2)); //attribute -> 
