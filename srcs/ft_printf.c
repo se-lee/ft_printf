@@ -19,7 +19,7 @@ int apply_type(t_format fmt)
     else if (fmt.type == 's')
         return (type_str(fmt));
     else if (fmt.type == 'i' || fmt.type == 'd')
-        return (type_int(&fmt));//(fmt, va_arg(fmt.arg_list, int))); // motomoto type_int(&fmt);
+        return (type_int(&fmt)); // motomoto type_int(&fmt);
     // else if (fmt.type == 'u')
     //     return (type_uint(fmt));
     // else if (fmt.type == 'x' || fmt.type == 'X')

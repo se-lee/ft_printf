@@ -58,54 +58,46 @@ int	type_str(t_format fmt)
 }
 
 /*
-int	type_int(t_format fmt, int nbr) //(t_format *fmt)
+int	type_int(int nbr, t_format fmt) //(t_format *fmt)
 {
-	char	*result_int; //final output
+	char	*result_int;
 	char	*temp; 
- 	char	*width_pad; //entire length
-	char	*prec_zero; //a string with number + zero fillings
-	int		sign;
+ 	char	*width_pad;
+	char	*sign;
 
-	result_int = NULL;
+	width_pad = NULL;
+	sign = ft_strdup("");
 	temp = NULL;
-	prec_zero = NULL; //malloc
-	width_pad = NULL; //malloc
-	sign = 0;
+	result_int = NULL;
+	if (fmt.prec_dot == 1 && nbr == 0)
+		result_int = ft_strdup(""); 
 	if (nbr < 0)
 	{
-		nbr *= -1;
-		sign = 1;
+		sign = ft_strjoin(sign, ft_strdup("-"));
+		fmt.str = ft_itoa(nbr * -1); //malloc
 	}
-	fmt.str = ft_itoa(nbr);
-	if (!(fmt.str))
-		return (0);
-	if (fmt.prec_value < ft_strlen(fmt.str))
-		prec_zero = ft_strdup(fmt.str);
-	else if (ft_strlen(fmt.str) < fmt.prec_value)
-	{
-		fmt.zero = 1;
-		temp = apply_padding(fmt, (fmt.prec_value - ft_strlen(fmt.str)));
-		prec_zero = ft_strjoin(temp, fmt.str); //malloc
-		free(temp);
-	}
-	if (ft_strlen(prec_zero) < fmt.width)
-	{
-		fmt.zero = 0;
-		width_pad = apply_padding(fmt, fmt.width - ft_strlen(prec_zero)); //malloc
-	}
-	else if (fmt.width <= ft_strlen(prec_zero))
-		width_pad = ft_strdup("");
-	result_int = sort_left_right(fmt, prec_zero, width_pad); //malloc
-	if (sign == 1)
-	{
-		ft_putchar_fd('-', 1);
-		fmt.printf_len = 1;
-	}
+	else
+		fmt.str = ft_itoa(nbr);
+printf("nb: %d", nbr);
+printf("str:%s ", fmt.str);
+	// if (ft_strlen(fmt.str) < fmt.prec_value)
+	// {
+	// 	fmt.zero = 1;
+	// 	temp = apply_padding(fmt, (fmt.prec_value - ft_strlen(fmt.str)));
+	// 	result_int = ft_strjoin(temp, fmt.str);
+	// 	free(temp);
+	// }
+	// if (ft_strlen(result_int) < fmt.width)
+	// {
+	// 	fmt.zero = 0;
+	// 	width_pad = apply_padding(fmt, fmt.width - ft_strlen(result_int)); //malloc
+	// }
+	// else if (fmt.width <= ft_strlen(result_int))
+	// 	width_pad = ft_strdup("");
+//	result_int = sort_left_right(fmt, result_int, width_pad); //malloc
 	ft_putstr_fd(result_int, 1);
 	fmt.printf_len = ft_strlen(result_int);
-	if (sign == 1)
-		fmt.printf_len += 1;
-	free(prec_zero);
+	free(sign);
 	free(width_pad);
 	free(fmt.str);
 	free(result_int);
@@ -115,15 +107,18 @@ int	type_int(t_format fmt, int nbr) //(t_format *fmt)
 int	type_int(t_format *fmt)
 {
 	char	*result_int; //final output
-//	char	sign;
+	char	*sign;
 	char	*temp; 
  	char	*width_pad; 
 	char	*prec_zero; 
-	
+	int		nbr;
+
 	result_int = NULL;
 	temp = NULL;
 	prec_zero = NULL; 
 	width_pad = NULL;; 
+	sign = ft_strdup("");
+printf("nb:%d ", nbr);
 
 	if (!(fmt->str))
 		return (0);
@@ -152,4 +147,3 @@ int	type_int(t_format *fmt)
 	free(result_int);
 	return (fmt->printf_len);
 }
-

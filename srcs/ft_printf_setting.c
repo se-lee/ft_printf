@@ -23,3 +23,4 @@ char  *sort_left_right(t_format fmt, char *str, char *padding)
         result = ft_strjoin(padding, str);
     return (result);
 }
+
