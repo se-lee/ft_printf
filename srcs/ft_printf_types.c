@@ -111,20 +111,21 @@ int	type_int(t_format *fmt)
 	char	*temp; 
  	char	*width_pad; 
 	char	*prec_zero; 
-	int		nbr;
+//	int		nbr;
 
 	result_int = NULL;
 	temp = NULL;
 	prec_zero = NULL; 
 	width_pad = NULL;; 
 	sign = ft_strdup("");
-printf("nb:%d ", nbr);
+// nbr =va_arg(fmt->arg_list, int);
+// printf("nb:%d ", nbr);
 
 	if (!(fmt->str))
 		return (0);
-	if (fmt->prec_value < ft_strlen(fmt->str))
-		prec_zero = ft_strdup(fmt->str);
-	else if (ft_strlen(fmt->str) < fmt->prec_value)
+	if (fmt->prec_dot == 1 && fmt->str == '0')
+		result_int = ft_strdup(""); 
+	if (ft_strlen(fmt->str) < fmt->prec_value)
 	{
 		fmt->zero = 1;
 		temp = apply_padding(*fmt, (fmt->prec_value - ft_strlen(fmt->str)));
@@ -141,6 +142,7 @@ printf("nb:%d ", nbr);
 	result_int = sort_left_right(*fmt, prec_zero, width_pad); 
 	ft_putstr_fd(result_int, 1);
 	fmt->printf_len = ft_strlen(result_int);
+	free(sign);
 	free(prec_zero);
 	free(width_pad);
 	free(fmt->str);
