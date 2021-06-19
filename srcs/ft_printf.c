@@ -19,7 +19,7 @@ int apply_type(t_format fmt)
     else if (fmt.type == 's')
         return (type_str(fmt));
     else if (fmt.type == 'i' || fmt.type == 'd')
-        return (type_int(&fmt)); // motomoto type_int(&fmt);
+        return (type_int(va_arg(fmt. arg_list, int), fmt));
     // else if (fmt.type == 'u')
     //     return (type_uint(fmt));
     // else if (fmt.type == 'x' || fmt.type == 'X')
@@ -29,6 +29,24 @@ int apply_type(t_format fmt)
     return (-1); //error 
 }
 
+/*
+int apply_type(t_format fmt)
+{
+    if (fmt.type == 'c' || fmt.type == '%')
+        return (type_char(fmt));
+    else if (fmt.type == 's')
+        return (type_str(fmt));
+    else if (fmt.type == 'i' || fmt.type == 'd')
+        return (type_int(&fmt));
+    // else if (fmt.type == 'u')
+    //     return (type_uint(fmt));
+    // else if (fmt.type == 'x' || fmt.type == 'X')
+    //     return (type_hexa(fmt));
+    // else if (fmt.type == 'p')
+    //     return (type_ptr(fmt));
+    return (-1); //error 
+}
+*/
 int ft_printf(const char *str, ...)
 {
     t_format fmt;

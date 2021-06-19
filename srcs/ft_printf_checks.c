@@ -75,7 +75,7 @@ int check_precision(char *str, t_format *fmt, int i)
     return (i);
 }
 
-/*
+
 int check_type(char c, t_format *fmt, int i, char **str, char *w)
 {
 	fmt->type = c;
@@ -88,7 +88,8 @@ int check_type(char c, t_format *fmt, int i, char **str, char *w)
 //if (c=='i') || (c=='d') *str = ft_itoa(va_arg(fmt->arg_list, int));//leaks !!!
     return(i);
 }
-*/
+
+/*
 int check_type(char c, t_format *fmt, int i, char **str, char *w)
 {
 	fmt->type = c;
@@ -110,4 +111,4 @@ int check_type(char c, t_format *fmt, int i, char **str, char *w)
         *str = ft_itoa(nbr);
     }
     return(i);
-}
+}*/
