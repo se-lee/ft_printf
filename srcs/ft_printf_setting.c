@@ -32,12 +32,11 @@ char    *apply_precision(t_format fmt)
     {
         fmt.zero = 1;
         pad_zero = apply_padding(fmt, fmt.prec_value - ft_strlen(fmt.str));
-        result = ft_strjoin(pad_zero, fmt.str);
     }
     else if (fmt.prec_value < ft_strlen(fmt.str))
         pad_zero = ft_strdup("");
  //printf("padzero: %s ", pad_zero);
-       result = ft_strjoin(pad_zero, fmt.str);
+    result = ft_strjoin(pad_zero, fmt.str);
  //printf("res: %s ", result);
     free(pad_zero);
     return (result);

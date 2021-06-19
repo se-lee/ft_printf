@@ -68,13 +68,15 @@ int	type_int(int nbr, t_format fmt)
 		fmt.str = ft_strdup(""); 
 	else if (nbr < 0)
 	{
-		sign = ft_strjoin(sign, ft_strdup("-"));
+		free(sign);
+		sign = ft_strdup("-");
 		fmt.str = ft_itoa(nbr * -1); //malloc
 	}
 	else
 		fmt.str = ft_itoa(nbr); 
-	
-	fmt.str = apply_precision(fmt);
+	temp = apply_precision(fmt);
+	free(fmt.str);
+	fmt.str = temp;
 	temp = apply_width(fmt);
 	result_int = ft_strjoin(sign, temp);
 //printf("str:%s ", fmt.str);
