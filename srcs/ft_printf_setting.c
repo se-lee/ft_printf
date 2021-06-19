@@ -83,6 +83,5 @@ void    apply_padding_free(t_format fmt, char **str, int len)
         result = ft_strjoin(padding, *str);
     free(*str);
     *str = result;
-    free(result);
     free(padding);
 }

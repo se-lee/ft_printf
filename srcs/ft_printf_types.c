@@ -73,14 +73,14 @@ int	type_int(int nbr, t_format fmt)
 	if (ft_strlen(result_int) < fmt.prec_value)
 	{
 		fmt.zero = 1;
-		ft_append(&result_int, apply_padding(fmt, fmt.prec_value - ft_strlen(result_int)));
+		apply_padding_free(fmt, &result_int, fmt.prec_value - ft_strlen(result_int));
 	}
 	if (nbr < 0)
 		ft_append(&result_int, "-");
 	if (ft_strlen(result_int) < fmt.width)
 	{
 		fmt.zero = 0;
-		ft_append(&result_int, apply_padding(fmt, fmt.width - ft_strlen(result_int)));
+		apply_padding_free(fmt, &result_int, fmt.width - ft_strlen(result_int));
 	}
 	ft_putstr_fd(result_int, 1);
 	fmt.printf_len = ft_strlen(result_int);
