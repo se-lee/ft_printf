@@ -24,6 +24,7 @@ char  *sort_left_right(t_format fmt, char *str, char *padding)
     return (result);
 }
 
+/*
 char    *apply_precision(t_format fmt)
 {
     char    *pad_zero = NULL;
@@ -35,13 +36,13 @@ char    *apply_precision(t_format fmt)
     }
     else if (fmt.prec_value < ft_strlen(fmt.str))
         pad_zero = ft_strdup("");
- //printf("padzero: %s ", pad_zero);
     result = ft_strjoin(pad_zero, fmt.str);
- //printf("res: %s ", result);
     free(pad_zero);
     return (result);
 }
+*/
 
+/*
 char    *apply_width(t_format fmt)
 {
     char    *pad_width = NULL;
@@ -57,4 +58,31 @@ char    *apply_width(t_format fmt)
     result = sort_left_right(fmt, fmt.str, pad_width);
     free(pad_width);
     return (result);
+}
+*/
+
+void    ft_append(char **a, char *str)
+{
+    char *result;
+
+    result = ft_strjoin(str, *a);
+    free(*a);
+    *a = result;
+}
+
+void    apply_padding_free(t_format fmt, char **str, int len)
+{
+    char    *padding;
+    char    *result;
+
+    result = NULL;
+    padding = apply_padding(fmt, len);
+    if (fmt.minus == 1)
+        result = ft_strjoin(*str, padding);
+    else if (fmt.minus == 0)
+        result = ft_strjoin(padding, *str);
+    free(*str);
+    *str = result;
+    free(result);
+    free(padding);
 }

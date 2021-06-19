@@ -25,6 +25,7 @@ int	type_char(t_format fmt)
 	return (fmt.printf_len);
 }
 
+
 int	type_str(t_format fmt)
 {
 	char	*result_str;
@@ -57,35 +58,32 @@ int	type_str(t_format fmt)
 	return (fmt.printf_len);
 }
 
+
 int	type_int(int nbr, t_format fmt) 
 {
 	char	*result_int;
-	char	*temp;
-	char	*sign;
 
-	sign = ft_strdup("");
-	if (fmt.prec_dot == 1 && nbr == 0 && fmt.prec_value != 0)
-		fmt.str = ft_strdup(""); 
+	result_int = NULL;
+	if (fmt.prec_dot == 1 && nbr == 0)
+		result_int = ft_strdup(""); 
 	else if (nbr < 0)
-	{
-		free(sign);
-		sign = ft_strdup("-");
-		fmt.str = ft_itoa(nbr * -1); //malloc
-	}
+		result_int = ft_itoa(nbr * -1); //malloc
 	else
-		fmt.str = ft_itoa(nbr); 
-	temp = apply_precision(fmt);
-	free(fmt.str);
-	fmt.str = temp;
-	temp = apply_width(fmt);
-	result_int = ft_strjoin(sign, temp);
-//printf("str:%s ", fmt.str);
-//printf("res: %s ", result_int);
+		result_int = ft_itoa(nbr); 
+	if (ft_strlen(result_int) < fmt.prec_value)
+	{
+		fmt.zero = 1;
+		ft_append(&result_int, apply_padding(fmt, fmt.prec_value - ft_strlen(result_int)));
+	}
+	if (nbr < 0)
+		ft_append(&result_int, "-");
+	if (ft_strlen(result_int) < fmt.width)
+	{
+		fmt.zero = 0;
+		ft_append(&result_int, apply_padding(fmt, fmt.width - ft_strlen(result_int)));
+	}
 	ft_putstr_fd(result_int, 1);
 	fmt.printf_len = ft_strlen(result_int);
-	free(temp);
-	free(sign);
-	free(fmt.str);
 	free(result_int);
 	return (fmt.printf_len);
 }
