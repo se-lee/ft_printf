@@ -19,24 +19,23 @@ typedef struct s_format
 	int	printf_len; //length of final result (str after all flags applied)
 	char c;
 	char *str;
-	int	neg;
 }				t_format;
 
 void    fmt_init(t_format *fmt);
-char	*apply_padding(t_format fmt, int len);
+char	*apply_padding(t_format *fmt, int len);
 int		check_flags(char *c, t_format *fmt, int i);
 int 	check_width(char *str, t_format *fmt, int i); 
 int 	check_precision(char *str, t_format *fmt, int i);
 int 	check_type(char c, t_format *fmt, int i, char **str, char *w);
-int 	type_char(t_format fmt);
-int 	type_str(t_format fmt);
-int		type_int(int nbr, t_format fmt);
+int 	type_char(t_format *fmt);
+int 	type_str(t_format *fmt);
+int		type_int(int nbr, t_format *fmt);
 //int	type_int(t_format *fmt);
-char  *sort_left_right(t_format fmt, char *str, char *padding);
-char    *apply_precision(t_format fmt);
-char    *apply_width(t_format fmt);
+char  *sort_left_right(t_format *fmt, char *str, char *padding);
+char    *apply_precision(t_format *fmt);
+char    *apply_width(t_format *fmt);
 void    ft_append(char **a, char *str);
-void    apply_padding_free(t_format fmt, char **str, int len);
+void    apply_padding_free(t_format *fmt, char **str, int len);
 
 
 int		ft_printf(const char *str, ...); //__attribute__(format(printf, 1, 2)); //attribute -> 

@@ -10,7 +10,6 @@ void    fmt_init(t_format *fmt)
     fmt->type = '\0';
     fmt->c = '\0';
     fmt->str = NULL;
-    fmt->neg = 0;
 }
 
 int	check_flags(char *c, t_format *fmt, int i)

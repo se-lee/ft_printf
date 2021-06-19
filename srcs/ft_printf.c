@@ -12,14 +12,14 @@ int read_format(char *str, t_format *fmt, int i)
 }
 
 
-int apply_type(t_format fmt)
+int apply_type(t_format *fmt)
 {
-    if (fmt.type == 'c' || fmt.type == '%')
+    if (fmt->type == 'c' || fmt->type == '%')
         return (type_char(fmt));
-    else if (fmt.type == 's')
+    else if (fmt->type == 's')
         return (type_str(fmt));
-    else if (fmt.type == 'i' || fmt.type == 'd')
-        return (type_int(va_arg(fmt.arg_list, int), fmt));
+    else if (fmt->type == 'i' || fmt->type == 'd')
+        return (type_int(va_arg(fmt->arg_list, int), fmt));
     // else if (fmt.type == 'u')
     //     return (type_uint(fmt));
     // else if (fmt.type == 'x' || fmt.type == 'X')
@@ -69,9 +69,9 @@ int ft_printf(const char *str, ...)
         {
 			i++;
             i = read_format((char*)str, &fmt, i);
-			fmt.printf_len += apply_type(fmt);
+			fmt.printf_len = fmt.printf_len + apply_type(&fmt);
         }
     }
-
+    va_end(fmt.arg_list);
     return (fmt.printf_len);
 }
