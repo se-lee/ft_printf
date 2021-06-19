@@ -85,3 +85,16 @@ void    apply_padding_free(t_format *fmt, char **str, int len)
     *str = result;
     free(padding);
 }
+
+void    apply_precision_free(t_format *fmt, char **str, int len)
+{
+    char    *fill_zero;
+    char    *result;
+
+    result = NULL;
+    fill_zero = apply_padding(fmt, len);
+    result = ft_strjoin(fill_zero, *str);
+    free(*str);
+    *str = result;
+    free(fill_zero);
+}
