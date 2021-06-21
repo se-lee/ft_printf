@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	type_char(t_format *fmt, char c)
+int	type_char(char c, t_format *fmt)
 {
 	char	*padding;
 	

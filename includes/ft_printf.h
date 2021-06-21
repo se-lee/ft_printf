@@ -27,7 +27,7 @@ int		check_flags(char *c, t_format *fmt, int i);
 int 	check_width(char *str, t_format *fmt, int i); 
 int 	check_precision(char *str, t_format *fmt, int i);
 int 	check_type(char c, t_format *fmt, int i, char **str);
-int		type_char(t_format *fmt, char c);
+int		type_char(char c, t_format *fmt);
 int 	type_str(t_format *fmt);
 int		type_int(int nbr, t_format *fmt);
 int		type_uint(unsigned int nbr, t_format *fmt);

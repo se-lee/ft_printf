@@ -15,9 +15,9 @@ int read_format(char *str, t_format *fmt, int i)
 int apply_type(t_format *fmt)
 {
     if (fmt->type == 'c')
-        return (type_char(fmt, (char)va_arg(fmt->arg_list, int)));
+        return (type_char((char)va_arg(fmt->arg_list, int), fmt));
     if (fmt->type == '%')
-        return (type_char(fmt, '%'));
+        return (type_char('%', fmt));
     else if (fmt->type == 's')
         return (type_str(fmt));
     else if (fmt->type == 'i' || fmt->type == 'd')
