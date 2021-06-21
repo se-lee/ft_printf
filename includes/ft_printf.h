@@ -32,6 +32,7 @@ int 	type_str(char *str, t_format *fmt);
 int		type_int(int nbr, t_format *fmt);
 int		type_uint(unsigned int nbr, t_format *fmt);
 int		type_hexa(unsigned int	nbr, t_format *fmt);
+int	type_ptr(unsigned long int nbr, t_format *fmt);
 //int	type_int(t_format *fmt);
 char  *sort_left_right(t_format *fmt, char *str, char *padding);
 char    *apply_precision(t_format *fmt);

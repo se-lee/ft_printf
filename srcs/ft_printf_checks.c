@@ -44,6 +44,7 @@ int check_width(char *str, t_format *fmt, int i)
     {
         fmt->width *= -1;
         fmt->minus = 1;
+        fmt->zero = 0;
     }
     return (i);
 }

@@ -55,7 +55,7 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_atoi_base(char *str, char *base);
 char			*ft_itoa_base(int n, const char *base);
-char			*ft_utoa_base(unsigned int n, const char *base);
+char			*ft_utoa_base(unsigned long int n, const char *base);
 
 
 typedef struct s_list

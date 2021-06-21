@@ -26,9 +26,9 @@ int apply_type(t_format *fmt)
         return (type_uint(va_arg(fmt->arg_list, unsigned), fmt));
     else if (fmt->type == 'x' || fmt->type == 'X')
         return (type_hexa(va_arg(fmt->arg_list, unsigned), fmt));
-    // else if (fmt.type == 'p')
-    //     return (type_ptr(fmt));
-    return (-1); //error 
+    else if (fmt->type == 'p')
+        return (type_ptr(va_arg(fmt->arg_list, long unsigned), fmt));
+    return (-1); 
 }
 
 
