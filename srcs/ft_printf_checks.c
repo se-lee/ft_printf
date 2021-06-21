@@ -16,9 +16,12 @@ int	check_flags(char *str, t_format *fmt, int i)
 {
 	while (str[i] && (str[i] == '0' || str[i] == '-'))
     {
-        if (str[i] == '-') 
-		    fmt->minus = 1;
-	    else
+        if (str[i] == '-')
+        {
+            fmt->minus = 1;
+		    fmt->zero = 0;
+        }
+	    else if (fmt->minus != 1)
 		    fmt->zero = 1;
         i++;
     }

@@ -72,17 +72,25 @@ int	type_int(int nbr, t_format *fmt)
 		result_int = ft_itoa(nbr * -1);
 	else
 		result_int = ft_itoa(nbr); 
-	if (ft_strlen(result_int) < fmt->prec_value)
-	{
-		fmt->zero = 1;
-		apply_precision_free(fmt, &result_int, fmt->prec_value - ft_strlen(result_int));
-	}
-	if (nbr < 0)
-		ft_append(&result_int, "-");
-	if (ft_strlen(result_int) < fmt->width)
-	{
+	if (fmt->prec_dot)
 		fmt->zero = 0;
-		apply_padding_free(fmt, &result_int, fmt->width - ft_strlen(result_int));
+	if (ft_strlen(result_int) < fmt->prec_value)
+		apply_precision_free(fmt, &result_int, fmt->prec_value - ft_strlen(result_int));
+	
+	
+	if (fmt->zero == 0)
+	{
+		if (nbr < 0)
+			ft_append(&result_int, "-");
+		if (ft_strlen(result_int) < fmt->width)
+			apply_padding_free(fmt, &result_int, fmt->width - ft_strlen(result_int));
+	}
+	else
+	{
+		if (ft_strlen(result_int) < fmt->width)
+			apply_padding_free(fmt, &result_int, fmt->width - ft_strlen(result_int) - (nbr < 0));
+		if (nbr < 0)
+			ft_append(&result_int, "-");
 	}
 	ft_putstr_fd(result_int, 1);
 	fmt->printf_len = ft_strlen(result_int);
@@ -148,16 +156,12 @@ int	type_uint(unsigned int nbr, t_format *fmt)
 		result_uint = ft_strdup(""); 
 	else
 		result_uint = ft_utoa_base(nbr, "0123456789"); 
-	if (ft_strlen(result_uint) < fmt->prec_value)
-	{
-		fmt->zero = 1;
-		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
-	}
-	if (ft_strlen(result_uint) < fmt->width)
-	{
+	if (fmt->prec_dot)
 		fmt->zero = 0;
+	if (ft_strlen(result_uint) < fmt->prec_value)
+		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
+	if (ft_strlen(result_uint) < fmt->width)
 		apply_padding_free(fmt, &result_uint, fmt->width - ft_strlen(result_uint));
-	}
 	ft_putstr_fd(result_uint, 1);
 	fmt->printf_len = ft_strlen(result_uint);
 	free(result_uint);
@@ -174,17 +178,13 @@ int	type_hexa(unsigned int	nbr, t_format *fmt)
 	else if (fmt->type == 'x')
 		result_uint = ft_utoa_base(nbr, "0123456789abcdef"); 
 	else if (fmt->type == 'X')
-		result_uint = ft_utoa_base(nbr, "0123456789ABCDEF"); 
-	if (ft_strlen(result_uint) < fmt->prec_value)
-	{
-		fmt->zero = 1;
-		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
-	}
-	if (ft_strlen(result_uint) < fmt->width)
-	{
+		result_uint = ft_utoa_base(nbr, "0123456789ABCDEF");
+	if (fmt->prec_dot)
 		fmt->zero = 0;
+	if (ft_strlen(result_uint) < fmt->prec_value)
+		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
+	if (ft_strlen(result_uint) < fmt->width)
 		apply_padding_free(fmt, &result_uint, fmt->width - ft_strlen(result_uint));
-	}
 	ft_putstr_fd(result_uint, 1);
 	fmt->printf_len = ft_strlen(result_uint);
 	free(result_uint);

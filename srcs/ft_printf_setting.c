@@ -90,9 +90,13 @@ void    apply_precision_free(t_format *fmt, char **str, int len)
 {
     char    *fill_zero;
     char    *result;
+    int     was_zero;
 
     result = NULL;
+    was_zero = fmt->zero;
+    fmt->zero = 1;
     fill_zero = apply_padding(fmt, len);
+    fmt->zero = was_zero;
     result = ft_strjoin(fill_zero, *str);
     free(*str);
     *str = result;
