@@ -26,12 +26,12 @@ char	*apply_padding(t_format *fmt, int len);
 int		check_flags(char *c, t_format *fmt, int i);
 int 	check_width(char *str, t_format *fmt, int i); 
 int 	check_precision(char *str, t_format *fmt, int i);
-int 	check_type(char c, t_format *fmt, int i, char **str, char *w);
-int 	type_char(t_format *fmt);
+int 	check_type(char c, t_format *fmt, int i, char **str);
+int		type_char(t_format *fmt, char c);
 int 	type_str(t_format *fmt);
 int		type_int(int nbr, t_format *fmt);
 int		type_uint(unsigned int nbr, t_format *fmt);
-
+int		type_hexa(unsigned int	nbr, t_format *fmt);
 //int	type_int(t_format *fmt);
 char  *sort_left_right(t_format *fmt, char *str, char *padding);
 char    *apply_precision(t_format *fmt);

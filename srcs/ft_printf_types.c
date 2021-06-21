@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	type_char(t_format *fmt)
+int	type_char(t_format *fmt, char c)
 {
 	char	*padding;
 	
@@ -12,13 +12,13 @@ int	type_char(t_format *fmt)
 	}
 	if (fmt->minus == 1)
 	{
-	    ft_putchar_fd(fmt->c, 1);
+	    ft_putchar_fd(c, 1);
         ft_putstr_fd(padding, 1);
     }
     else if (fmt->minus == 0)
     {
         ft_putstr_fd(padding, 1);
-        ft_putchar_fd(fmt->c, 1);
+        ft_putchar_fd(c, 1);
     }
 	fmt->printf_len = ft_strlen(padding) + 1;
 	free(padding);
@@ -145,7 +145,34 @@ int	type_uint(unsigned int nbr, t_format *fmt)
 	if (fmt->prec_dot == 1 && nbr == 0)
 		result_uint = ft_strdup(""); 
 	else
-		result_uint = ft_itoa(nbr); 
+		result_uint = ft_utoa_base(nbr, "0123456789"); 
+	if (ft_strlen(result_uint) < fmt->prec_value)
+	{
+		fmt->zero = 1;
+		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
+	}
+	if (ft_strlen(result_uint) < fmt->width)
+	{
+		fmt->zero = 0;
+		apply_padding_free(fmt, &result_uint, fmt->width - ft_strlen(result_uint));
+	}
+	ft_putstr_fd(result_uint, 1);
+	fmt->printf_len = ft_strlen(result_uint);
+	free(result_uint);
+	return (fmt->printf_len);
+}
+
+int	type_hexa(unsigned int	nbr, t_format *fmt)
+{
+	char	*result_uint;
+
+	result_uint = NULL;
+	if (fmt->prec_dot == 1 && nbr == 0)
+		result_uint = ft_strdup(""); 
+	else if (fmt->type == 'x')
+		result_uint = ft_utoa_base(nbr, "0123456789abcdef"); 
+	else if (fmt->type == 'X')
+		result_uint = ft_utoa_base(nbr, "0123456789ABCDEF"); 
 	if (ft_strlen(result_uint) < fmt->prec_value)
 	{
 		fmt->zero = 1;

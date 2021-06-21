@@ -75,19 +75,18 @@ int check_precision(char *str, t_format *fmt, int i)
 }
 
 
-int check_type(char c, t_format *fmt, int i, char **str, char *w)
+int check_type(char c, t_format *fmt, int i, char **str)
 {
 	fmt->type = c;
     i++;
     if (c == 's')
         *str = ft_strdup(va_arg(fmt->arg_list, char *));
-    if (c == 'c' || c == '%')
-        *w = (char)va_arg(fmt->arg_list, int);
+    // if (c == 'c' || c == '%')
+    //     *w = (char)va_arg(fmt->arg_list, int);
  //   if (c == 'i' || c == 'd')
 //if (c=='i') || (c=='d') *str = ft_itoa(va_arg(fmt->arg_list, int));//leaks !!!
     return(i);
 }
-
 /*
 int check_type(char c, t_format *fmt, int i, char **str, char *w)
 {
