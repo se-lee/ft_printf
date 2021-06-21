@@ -26,7 +26,7 @@ int	type_char(char c, t_format *fmt)
 }
 
 
-int	type_str(t_format *fmt)
+int	type_str(char *str, t_format *fmt)
 {
 	char	*result_str;
 	char	*temp;
@@ -35,26 +35,28 @@ int	type_str(t_format *fmt)
 	i = 0;
 	result_str = NULL;
 	temp = NULL;
-	if (!(fmt->str))
-		return (0);
-	if ((fmt->prec_value < ft_strlen(fmt->str)) && (fmt->prec_dot == 1))
+	if (!str)
+		str = ft_strdup("(null)");
+	else
+		str = ft_strdup(str);
+	if ((fmt->prec_value < ft_strlen(str)) && (fmt->prec_dot == 1))
 	{
-		temp = fmt->str;
-		fmt->str = ft_substr(temp, 0, fmt->prec_value); 
+		temp = str;
+		str = ft_substr(temp, 0, fmt->prec_value); 
 		free(temp);
 	}
-	if (fmt->width > ft_strlen(fmt->str))
+	if (fmt->width > ft_strlen(str))
 	{
-		temp = apply_padding(fmt, (fmt->width - ft_strlen(fmt->str)));
-		result_str = sort_left_right(fmt, fmt->str, temp);
+		temp = apply_padding(fmt, (fmt->width - ft_strlen(str)));
+		result_str = sort_left_right(fmt, str, temp);
 		free(temp);
 	}
 	else
-		result_str = ft_strdup(fmt->str);
+		result_str = ft_strdup(str);
 	ft_putstr_fd(result_str, 1);
 	fmt->printf_len = ft_strlen(result_str);
 	free(result_str);
-	free(fmt->str);
+	free(str);
 	return (fmt->printf_len);
 }
 

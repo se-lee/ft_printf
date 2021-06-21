@@ -7,7 +7,7 @@ int read_format(char *str, t_format *fmt, int i)
 	i = check_flags(str, fmt, i);
 	i = check_width(str, fmt, i);
 	i = check_precision(str, fmt, i);
-	i = check_type(str[i], fmt, i, &(fmt->str));
+	i = check_type(str, fmt, i);
 	return (i);
 }
 
@@ -19,7 +19,7 @@ int apply_type(t_format *fmt)
     if (fmt->type == '%')
         return (type_char('%', fmt));
     else if (fmt->type == 's')
-        return (type_str(fmt));
+        return (type_str(va_arg(fmt->arg_list, char *), fmt));
     else if (fmt->type == 'i' || fmt->type == 'd')
         return (type_int(va_arg(fmt->arg_list, int), fmt));
     else if (fmt->type == 'u')
