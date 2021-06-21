@@ -65,3 +65,23 @@ void	apply_precision_free(t_format *fmt, char **str, int len)
 	*str = result;
 	free(fill_zero);
 }
+
+/*
+void	apply_zero(t_format *fmt, int *nbr, char **str)
+{
+	if (fmt->zero == 0)
+	{
+		if (nbr < 0)
+			ft_append(&str, "-");
+		if (ft_strlen(**str) < fmt->width)
+			apply_padding_free(fmt, &str, fmt->width - ft_strlen(str));
+	}
+	else
+	{
+		if (ft_strlen(**str) < fmt->width)
+			apply_padding_free(ftm, &str, fmt->width - ft_strlen(**str) - (nbr < 0));
+		if (nbr < 0)
+			ft_append(&str, "-");
+	}
+}
+*/

@@ -57,7 +57,6 @@ int				ft_atoi_base(char *str, char *base);
 char			*ft_itoa_base(int n, const char *base);
 char			*ft_utoa_base(unsigned long int n, const char *base);
 
-
 typedef struct s_list
 {
 	void			*content;

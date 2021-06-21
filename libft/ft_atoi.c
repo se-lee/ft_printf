@@ -36,7 +36,7 @@ int	ft_atoi(const char *str)
 		nbr = nbr * 10 + (str[i] - '0');
 		if (sign == 1 && nbr > LONG_MAX)
 			return ((int)LONG_MAX);
-		if (sign == -1 && -nbr < LONG_MIN)
+		if (sign == -1 && - nbr < LONG_MIN)
 			return ((int)LONG_MIN);
 		i++;
 	}

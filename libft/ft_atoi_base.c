@@ -1,4 +1,4 @@
-int		ft_base_check(char *base)
+int	ft_base_check(char *base)
 {
 	int		i;
 	int		j;
@@ -24,7 +24,7 @@ int		ft_base_check(char *base)
 	return (1);
 }
 
-int		ft_get_in_base(char c, char *base)
+int	ft_get_in_base(char c, char *base)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int		ft_get_in_base(char c, char *base)
 	return (-1);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int		nbr;
 	int		sign;

@@ -40,12 +40,14 @@ int	type_str(char *str, t_format *fmt)
 		str = ft_strdup(str);
 	if ((fmt->prec_value < ft_strlen(str)) && (fmt->prec_dot == 1))
 	{
+//		result_str = ft_substr(str, 0, fmt->prec_value);
 		temp = str;
 		str = ft_substr(temp, 0, fmt->prec_value);
 		free(temp);
 	}
 	if (fmt->width > ft_strlen(str))
 	{
+//		apply_padding_free(fmt, &result_str, (fmt->width - ft_strlen(str)));
 		temp = apply_padding(fmt, (fmt->width - ft_strlen(str)));
 		result_str = sort_left_right(fmt, str, temp);
 		free(temp);
@@ -74,6 +76,8 @@ int	type_int(int nbr, t_format *fmt)
 		fmt->zero = 0;
 	if (ft_strlen(result_int) < fmt->prec_value)
 		apply_precision_free(fmt, &result_int, fmt->prec_value - ft_strlen(result_int));
+
+	//apply_zero(fmt, &nbr, &(*result_int));
 	if (fmt->zero == 0)
 	{
 		if (nbr < 0)
@@ -81,13 +85,14 @@ int	type_int(int nbr, t_format *fmt)
 		if (ft_strlen(result_int) < fmt->width)
 			apply_padding_free(fmt, &result_int, fmt->width - ft_strlen(result_int));
 	}
-	else
+	else //if fmt->zero == 1
 	{
 		if (ft_strlen(result_int) < fmt->width)
 			apply_padding_free(fmt, &result_int, fmt->width - ft_strlen(result_int) - (nbr < 0));
 		if (nbr < 0)
 			ft_append(&result_int, "-");
 	}
+
 	ft_putstr_fd(result_int, 1);
 	fmt->printf_len = ft_strlen(result_int);
 	free(result_int);
@@ -106,9 +111,11 @@ int	type_uint(unsigned int nbr, t_format *fmt)
 	if (fmt->prec_dot)
 		fmt->zero = 0;
 	if (ft_strlen(result_uint) < fmt->prec_value)
-		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
+		apply_precision_free(fmt, &result_uint,
+			fmt->prec_value - ft_strlen(result_uint));
 	if (ft_strlen(result_uint) < fmt->width)
-		apply_padding_free(fmt, &result_uint, fmt->width - ft_strlen(result_uint));
+		apply_padding_free(fmt, &result_uint,
+			fmt->width - ft_strlen(result_uint));
 	ft_putstr_fd(result_uint, 1);
 	fmt->printf_len = ft_strlen(result_uint);
 	free(result_uint);
@@ -129,9 +136,11 @@ int	type_hexa(unsigned int	nbr, t_format *fmt)
 	if (fmt->prec_dot)
 		fmt->zero = 0;
 	if (ft_strlen(result_uint) < fmt->prec_value)
-		apply_precision_free(fmt, &result_uint, fmt->prec_value - ft_strlen(result_uint));
+		apply_precision_free(fmt, &result_uint,
+			fmt->prec_value - ft_strlen(result_uint));
 	if (ft_strlen(result_uint) < fmt->width)
-		apply_padding_free(fmt, &result_uint, fmt->width - ft_strlen(result_uint));
+		apply_padding_free(fmt, &result_uint,
+			fmt->width - ft_strlen(result_uint));
 	ft_putstr_fd(result_uint, 1);
 	fmt->printf_len = ft_strlen(result_uint);
 	free(result_uint);
@@ -150,10 +159,12 @@ int	type_ptr(unsigned long int nbr, t_format *fmt)
 	if (fmt->prec_dot)
 		fmt->zero = 0;
 	if (ft_strlen(result_ptr) < fmt->prec_value)
-		apply_precision_free(fmt, &result_ptr, fmt->prec_value - ft_strlen(result_ptr));
+		apply_precision_free(fmt, &result_ptr,
+			fmt->prec_value - ft_strlen(result_ptr));
 	ft_append(&result_ptr, "0x");
 	if (ft_strlen(result_ptr) < fmt->width)
-		apply_padding_free(fmt, &result_ptr, fmt->width - ft_strlen(result_ptr));
+		apply_padding_free(fmt, &result_ptr,
+			fmt->width - ft_strlen(result_ptr));
 	ft_putstr_fd(result_ptr, 1);
 	fmt->printf_len = ft_strlen(result_ptr);
 	free(result_ptr);
