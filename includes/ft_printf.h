@@ -9,16 +9,14 @@
 
 typedef struct s_format
 {
-	va_list	arg_list; // all the "unused' parameters after the main str
-	int	minus; // 0 if minus doesnt exist, 1 if exists
-	int	zero; // 0 or 1
-	int	width; //-1 if not existent
-	int	prec_dot; //dot, 0 is not existent
-	int prec_value; //the actual value of prec
-	char	type; //csiduxX
-	int	printf_len; //length of final result (str after all flags applied)
-	char c;
-	char *str;
+	va_list	arg_list;
+	int	minus;
+	int	zero;
+	int	width;
+	int	prec_dot;
+	int prec_value;
+	char	type;
+	int	printf_len;
 }				t_format;
 
 void    fmt_init(t_format *fmt);
@@ -32,18 +30,11 @@ int 	type_str(char *str, t_format *fmt);
 int		type_int(int nbr, t_format *fmt);
 int		type_uint(unsigned int nbr, t_format *fmt);
 int		type_hexa(unsigned int	nbr, t_format *fmt);
-int	type_ptr(unsigned long int nbr, t_format *fmt);
-//int	type_int(t_format *fmt);
-char  *sort_left_right(t_format *fmt, char *str, char *padding);
-char    *apply_precision(t_format *fmt);
-char    *apply_width(t_format *fmt);
+int		type_ptr(unsigned long int nbr, t_format *fmt);
 void    ft_append(char **a, char *str);
 void    apply_padding_free(t_format *fmt, char **str, int len);
 void    apply_precision_free(t_format *fmt, char **str, int len);
 void	apply_zero(t_format *fmt, int *nbr, char **str);
-
-
-int		ft_printf(const char *str, ...); //__attribute__(format(printf, 1, 2)); //attribute -> 
-
+int		ft_printf(const char *str, ...);
 
 #endif

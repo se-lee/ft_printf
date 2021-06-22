@@ -12,18 +12,6 @@ char	*apply_padding(t_format *fmt, int len)
 	return (padding);
 }
 
-char	*sort_left_right(t_format *fmt, char *str, char *padding)
-{
-	char	*result;
-
-	result = NULL;
-	if (fmt->minus == 1)
-		result = ft_strjoin(str, padding);
-	else if (fmt->minus == 0 )
-		result = ft_strjoin(padding, str);
-	return (result);
-}
-
 void	ft_append(char **a, char *str)
 {
 	char	*result;
@@ -78,7 +66,8 @@ void	apply_zero(t_format *fmt, int *nbr, char **str)
 	else
 	{
 		if (ft_strlen(*str) < fmt->width)
-			apply_padding_free(fmt, str, fmt->width - ft_strlen(*str) - (*nbr < 0));
+			apply_padding_free(fmt, str,
+				fmt->width - ft_strlen(*str) - (*nbr < 0));
 		if (*nbr < 0)
 			ft_append(str, "-");
 	}

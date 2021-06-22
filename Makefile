@@ -4,7 +4,8 @@ LIBFT		= libft
 INC			= includes
 SRCS		=	ft_printf.c \
 				ft_printf_checks.c \
-				ft_printf_types.c \
+				ft_printf_type_chars.c \
+				ft_printf_type_nbrs.c \
 				ft_printf_setting.c \
 
 OBJS		= $(addprefix $(BIN)/, $(SRCS:.c=.o))
@@ -12,7 +13,7 @@ NAME		= libftprintf.a
 LIBFT_FILE	= $(LIBFT)/libft.a
 CC			= gcc
 RM			= rm -rf
-CFLAGS		= -g -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS		= -g -Wall -Wextra -Werror
 HEADERS		= $(addprefix $(INC)/, ft_printf.h)
 
 all:		init $(NAME)

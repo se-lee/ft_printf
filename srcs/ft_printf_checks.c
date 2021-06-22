@@ -8,8 +8,6 @@ void	fmt_init(t_format *fmt)
 	fmt->prec_dot = 0;
 	fmt->prec_value = 0;
 	fmt->type = '\0';
-	fmt->c = '\0';
-	fmt->str = NULL;
 }
 
 int	check_flags(char *str, t_format *fmt, int i)

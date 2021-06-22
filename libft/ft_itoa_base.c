@@ -20,16 +20,14 @@ static int	ft_len_nbr(int n, int base_len)
 	return (i);
 }
 
-char	*ft_itoa_base(int n, const char *base)
+char	*ft_itoa_base(int n, const char *base, int base_len)
 {
 	int				i;
 	char			*str;
 	int				len;
 	long long int	nbr;
-	int				base_len;
 
 	nbr = (long long int)n;
-	base_len = ft_strlen(base);
 	len = ft_len_nbr(n, base_len);
 	str = (char *)malloc(sizeof(char) * len + 1);
 	if (!str)

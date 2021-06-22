@@ -109,8 +109,7 @@ char	**ft_split(const char *string, char sep)
 			ft_cleanup(words, word_index);
 			return (NULL);
 		}
-		words[word_index] = new_word;
-		word_index++;
+		words[word_index++] = new_word;
 	}
 	words[word_index] = NULL;
 	return (words);
