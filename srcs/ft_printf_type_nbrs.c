@@ -17,6 +17,8 @@ int	type_int(int nbr, t_format *fmt)
 		apply_precision_free(fmt, &result_int,
 			fmt->prec_value - ft_strlen(result_int));
 	apply_zero(fmt, &nbr, &result_int);
+	if (result_int == NULL)
+		return (-1);
 	ft_putstr_fd(result_int, 1);
 	fmt->printf_len = ft_strlen(result_int);
 	free(result_int);
@@ -40,6 +42,8 @@ int	type_uint(unsigned int nbr, t_format *fmt)
 	if (ft_strlen(result_uint) < fmt->width)
 		apply_padding_free(fmt, &result_uint,
 			fmt->width - ft_strlen(result_uint));
+	if (result_uint == NULL)
+		return (-1);
 	ft_putstr_fd(result_uint, 1);
 	fmt->printf_len = ft_strlen(result_uint);
 	free(result_uint);
@@ -65,6 +69,8 @@ int	type_hexa(unsigned int	nbr, t_format *fmt)
 	if (ft_strlen(result_uint) < fmt->width)
 		apply_padding_free(fmt, &result_uint,
 			fmt->width - ft_strlen(result_uint));
+	if (result_uint == NULL)
+		return (-1);
 	ft_putstr_fd(result_uint, 1);
 	fmt->printf_len = ft_strlen(result_uint);
 	free(result_uint);
@@ -89,6 +95,8 @@ int	type_ptr(unsigned long int nbr, t_format *fmt)
 	if (ft_strlen(result_ptr) < fmt->width)
 		apply_padding_free(fmt, &result_ptr,
 			fmt->width - ft_strlen(result_ptr));
+	if (result_ptr == NULL)
+		return (-1);
 	ft_putstr_fd(result_ptr, 1);
 	fmt->printf_len = ft_strlen(result_ptr);
 	free(result_ptr);

@@ -5,6 +5,8 @@ char	*apply_padding(t_format *fmt, int len)
 	char	*padding;
 
 	padding = ft_calloc(len + 1, sizeof(char));
+	if (padding == NULL)
+		return (NULL);
 	if (fmt->zero == 1)
 		padding = ft_memset(padding, '0', len);
 	else

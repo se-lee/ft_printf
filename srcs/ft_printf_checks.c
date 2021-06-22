@@ -76,8 +76,16 @@ int	check_precision(char *str, t_format *fmt, int i)
 
 int	check_type(char *str, t_format *fmt, int i)
 {
-	fmt->type = str[i];
-	if (str[i])
-		i++;
+	char	c;
+
+	c = str[i];
+	if (c && (c == 'd' || c == 'i' || c == '%' || c == 's'
+			|| c == 'c' || c == 'x' || c == 'X' || c == 'u' || c == 'p'))
+		fmt->type = str[i++];
+	else
+	{
+		fmt->printf_len++;
+		fmt->type = '\0';
+	}
 	return (i);
 }

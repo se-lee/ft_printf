@@ -10,6 +10,8 @@ int	type_char(char c, t_format *fmt)
 		free(padding);
 		padding = apply_padding(fmt, (fmt->width - 1));
 	}
+	if (padding == NULL)
+		return (-1);
 	if (fmt->minus == 1)
 	{
 		ft_putchar_fd(c, 1);
@@ -32,8 +34,6 @@ int	type_str(char *str, t_format *fmt)
 	int		i;
 
 	i = 0;
-	result_str = NULL;
-	temp = NULL;
 	if (!str)
 		result_str = ft_strdup("(null)");
 	else
@@ -47,6 +47,8 @@ int	type_str(char *str, t_format *fmt)
 	if (fmt->width > ft_strlen(result_str))
 		apply_padding_free(fmt, &result_str,
 			(fmt->width - ft_strlen(result_str)));
+	if (result_str == NULL)
+		return (-1);
 	ft_putstr_fd(result_str, 1);
 	fmt->printf_len = ft_strlen(result_str);
 	free(result_str);

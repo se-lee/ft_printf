@@ -29,6 +29,24 @@ int	apply_type(t_format *fmt)
 	return (-1);
 }
 
+int	do_format(const char *str, t_format *fmt, int *i)
+{
+	int 		len_save;
+	int			result;
+
+	(*i)++;
+	result = read_format((char*)str, fmt, *i);
+	if (result < 0)
+		return (-1);
+	*i = result;
+	len_save = fmt->printf_len;
+	result = apply_type(fmt);
+	if (result < 0)
+		return (-1);
+	fmt->printf_len = len_save + result;
+	return (0);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	t_format	fmt;
@@ -37,8 +55,6 @@ int	ft_printf(const char *str, ...)
 	va_start(fmt.arg_list, str);
 	fmt.printf_len = 0;
 	i = 0;
-	if (!str)
-		return (0);
 	while (str[i] != '\0')
 	{
 		if (str[i] != '%')
@@ -47,11 +63,10 @@ int	ft_printf(const char *str, ...)
 			i++;
 			fmt.printf_len++;
 		}
-		else
+		else if (do_format(str, &fmt, &i) < 0)
 		{
-			i++;
-			i = read_format((char *)str, &fmt, i);
-			fmt.printf_len = fmt.printf_len + apply_type(&fmt);
+			va_end(fmt.arg_list);
+			return (-1);
 		}
 	}
 	va_end(fmt.arg_list);
