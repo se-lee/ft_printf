@@ -40,7 +40,7 @@ char    *apply_width(t_format *fmt);
 void    ft_append(char **a, char *str);
 void    apply_padding_free(t_format *fmt, char **str, int len);
 void    apply_precision_free(t_format *fmt, char **str, int len);
-//void	apply_zero(t_format *fmt, int *nbr, char ***str);
+void	apply_zero(t_format *fmt, int *nbr, char **str);
 
 
 int		ft_printf(const char *str, ...); //__attribute__(format(printf, 1, 2)); //attribute -> 
