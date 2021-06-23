@@ -31,11 +31,11 @@ int	apply_type(t_format *fmt)
 
 int	do_format(const char *str, t_format *fmt, int *i)
 {
-	int 		len_save;
-	int			result;
+	int	len_save;
+	int	result;
 
 	(*i)++;
-	result = read_format((char*)str, fmt, *i);
+	result = read_format((char *)str, fmt, *i);
 	if (result < 0)
 		return (-1);
 	*i = result;
