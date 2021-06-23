@@ -41,8 +41,8 @@ int	type_str(char *str, t_format *fmt)
 	if ((fmt->prec_value < ft_strlen(result_str)) && (fmt->prec_dot == 1))
 	{
 		temp = result_str;
-		free(result_str);
 		result_str = ft_substr(temp, 0, fmt->prec_value);
+		free(temp);
 	}
 	if (fmt->width > ft_strlen(result_str))
 		apply_padding_free(fmt, &result_str,
