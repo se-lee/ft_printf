@@ -35,6 +35,6 @@ void	ft_append(char **a, char *str);
 void	apply_padding_free(t_format *fmt, char **str, int len);
 void	apply_precision_free(t_format *fmt, char **str, int len);
 void	apply_zero(t_format *fmt, int *nbr, char **str);
-int		t_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 
 #endif
